@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Fechar tarefa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/5v5z4m3q3x5F07xj9/9b/EEf7hDf8Yg1BfNt6bp" crossorigin="anonymous">
+    <style>
+      body {
+        background-color: #1d3557;
+        font-family: Arial, sans-serif;
+      }
+
+      h1 {
+        color: #ffffff;
+        margin-bottom: 2rem;
+      }
+
+      form {
+        background-color: #2a446c;
+        padding: 2rem;
+        border-radius: 5px;
+      }
+
+      label {
+        color: #ffffff;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      textarea {
+        width: 100%;
+        font-size: 1.2rem;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+      }
+
+      input[type="submit"] {
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Fechar tarefa: {{ issue.title }}</h1>
+      <form action="{{ url_for('close_issue', issue_id=issue.id) }}" method="post">
+        {{ form.csrf_token }}
+        <label for="{{ form.action_taken.id }}">{{ form.action_taken.label }}</label>
+        <textarea id="{{ form.action_taken.id }}" name="{{ form.action_taken.name }}" rows="5">{{ form.action_taken.data }}</textarea>
+        <input type="submit" value="Enviar" />
+      </form>
+    </div>
+  </body>
+</html>
+
